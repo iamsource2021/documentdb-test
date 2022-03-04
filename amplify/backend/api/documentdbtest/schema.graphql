@@ -1,0 +1,56 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type Profile {
+  nombre: String
+  razonsocial: String
+  rfc: String
+  direccion: String
+  telefono:String
+}
+
+input createProfileInput {
+  nombre: String
+  razonsocial: String
+  rfc: String!
+  direccion: String
+  telefono:String
+}
+
+input updateProfileInput {
+  nombre: String
+  razonsocial: String
+  rfc: String!
+  direccion: String
+  telefono:String
+}
+
+input deleteProfileInput {
+  rfc: String
+}
+
+type Query {
+  listProfile: [Profile]
+    @function(name: "documentdbtest3b411186-${env}")
+  getProfile(rfc: String!):  Profile
+    @function(name: "documentdbtest2ece4974-${env}")
+}
+
+type Mutation {
+  createProfile(input:createProfileInput):Profile
+    @function(name: "documentdbtest76d3ab8a-${env}")
+  updateProfile(input:updateProfileInput):Profile
+    @function(name: "documentdbtest7066ed43-${env}")
+  deleteProfile(input:deleteProfileInput):Profile
+    @function(name: "documentdbtestc9062471-${env}")        
+}
+
+type Subscription {
+  onCreateProfile:Profile
+    @aws_subscribe(mutations: ["createProfile"])
+  onUpdateProfile:Profile
+    @aws_subscribe(mutations: ["updateProfile"])
+  onDeleteProfile:Profile
+    @aws_subscribe(mutations: ["deleteProfile"])     
+}

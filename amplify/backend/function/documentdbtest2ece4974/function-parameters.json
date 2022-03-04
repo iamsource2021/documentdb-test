@@ -1,0 +1,21 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "awsdocumentdbParamsUri",
+      "environmentVariableName": "AWSDOCUMENTDB_PARAMS_URI"
+    },
+    {
+      "cloudFormationParameterName": "awsdocumentdbParamsSslca",
+      "environmentVariableName": "AWSDOCUMENTDB_PARAMS_SSLCA"
+    },
+    {
+      "cloudFormationParameterName": "mongodbCloudDefault",
+      "environmentVariableName": "MONGODB_CLOUD_DEFAULT"
+    },
+    {
+      "cloudFormationParameterName": "mongodbcloudParamsUri",
+      "environmentVariableName": "MONGODBCLOUD_PARAMS_URI"
+    }
+  ]
+}
